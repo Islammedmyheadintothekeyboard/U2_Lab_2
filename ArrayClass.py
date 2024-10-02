@@ -29,14 +29,17 @@ class DynamicArray:
     return self.__capacity
 
   def __resize(self):
-    for loop in range(0, self.__capacity, 1):
-      self.__A += [None]
     self.__capacity *= 2
+    TempList = self.__make_array(self.__capacity)
+    for loop in range(len(self.__A)):
+      TempList[loop] = self.__A[loop]
+    self.__A = TempList
 
   def append(self, item):
     if self.__n == self.__capacity:
       self.__resize()
     self.__A[self.__n] = item
+    self.__n += 1
 
 
 
